@@ -9,14 +9,15 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    private $products = [
+            ['id' => 0, 'name' => 'product A', 'price' => '500$'],
+            ['id' => 1, 'name' => 'product B', 'price' => '550$'],
+            ['id' => 2, 'name' => 'product C', 'price' => '600$']
+        ];
     public function index()
     {
-        $products = [
-            ['name' => 'product A', 'price' => '500'],
-            ['name' => 'product B', 'price' => '550'],
-            ['name' => 'product C', 'price' => '600']
-        ];
-        return view('products', ['products' => $products]);
+        return view('products.index', ['products' => $this->products]);
     }
 
     /**
@@ -40,7 +41,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+       return view('products.show', ['product' => $this->products[$id]]);
     }
 
     /**
